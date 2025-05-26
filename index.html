@@ -2,10 +2,72 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Diario Emocional</title>
+  <title>Mi Diario</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f8;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 1.8rem;
+      color: #6B47DC;
+    }
+    iframe {
+      width: 100%;
+      border: none;
+      margin-top: 1rem;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 1rem;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: #6B47DC;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenida a tu Diario Emocional</h1>
-  <p>Este es un espacio para sembrar dentro de ti.</p>
+  <div class="container">
+    <h1>Hoy es un buen día para sembrar dentro de ti</h1>
+    <p>Antes de escribir, te invitamos a escuchar esta práctica breve:</p>
+    <iframe src="https://www.youtube.com/embed/viCo5KHWUwc" height="315" allowfullscreen></iframe>
+
+    <h2>Mi Diario Emocional</h2>
+    <textarea id="diario" placeholder="Escribe aquí lo que sientes o necesitas hoy..."></textarea>
+    <button onclick="guardarEntrada()">Guardar entrada</button>
+  </div>
+
+  <script>
+    function guardarEntrada() {
+      const texto = document.getElementById('diario').value;
+      const fecha = new Date().toLocaleString();
+      localStorage.setItem(`entrada-${fecha}`, texto);
+      alert('Tu entrada ha sido guardada \u2764\ufe0f');
+      document.getElementById('diario').value = '';
+    }
+  </script>
 </body>
 </html>
